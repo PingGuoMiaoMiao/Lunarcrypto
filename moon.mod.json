@@ -1,9 +1,20 @@
 {
   "name": "PingGuoMiaoMiao/Lunarcrypto",
   "version": "0.1.0",
+  "deps": {
+    "PingGuoMiaoMiao/LunarKeccak256": "0.1.1",
+    "moonbitlang/x": "0.4.37",
+    "Yoorkin/ArgParser": "0.2.0"
+  },
   "readme": "README.mbt.md",
   "repository": "",
   "license": "Apache-2.0",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "link": {
+    "native": {
+      "cc": "/usr/bin/gcc",
+    }
+  },
+  "preferred-target": "native"
 }

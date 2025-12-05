@@ -1,0 +1,14 @@
+{
+  "is_main": false,
+  "import": [
+    "PingGuoMiaoMiao/LunarKeccak256/cmd/lib"
+  ],
+  "link": {
+    "native": {
+      "cc": "gcc",
+      "cc-flags": "-I/usr/local/include",
+      "cc-link-flags": "-L/usr/local/lib -lsecp256k1"
+    }
+  }
+}
+
