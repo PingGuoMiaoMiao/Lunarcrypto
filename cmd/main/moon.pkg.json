@@ -1,4 +1,9 @@
 {
   "is-main": true,
-  "import": []
+  "import": [
+    {
+      "path": "PingGuoMiaoMiao/Lunarcrypto",
+      "alias": "lib"
+    }
+  ]
 }
