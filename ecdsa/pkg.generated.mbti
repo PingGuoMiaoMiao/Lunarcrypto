@@ -1,0 +1,188 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "PingGuoMiaoMiao/Lunarcrypto/ecdsa"
+
+// Values
+pub const CURVE_A : Int = 0
+
+pub const CURVE_B : Int = 7
+
+pub const CURVE_N : String = "fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141"
+
+pub const CURVE_P : String = "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f"
+
+pub const GENERATOR_X : String = "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798"
+
+pub const GENERATOR_Y : String = "483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8"
+
+pub const PRIVATE_KEY_MIN : Int = 1
+
+pub const SECP256K1_CONTEXT_NONE : Int = 0x01
+
+pub const SECP256K1_CONTEXT_SIGN : Int = 0x0201
+
+pub const SECP256K1_CONTEXT_VERIFY : Int = 0x0101
+
+pub const SECP256K1_EC_COMPRESSED : Int = 0x0102
+
+pub const SECP256K1_EC_UNCOMPRESSED : Int = 0x0002
+
+pub fn create_context(Int) -> Int
+
+pub fn derive_public_key(PrivateKey) -> Result[PublicKey, ECDSAError]
+
+pub fn derive_public_key_native(PrivateKey) -> Result[PublicKey, ECDSAError]
+
+pub fn destroy_context(Int) -> Unit
+
+pub fn generate_keypair() -> Result[KeyPair, ECDSAError]
+
+pub fn generate_private_key() -> Result[PrivateKey, ECDSAError]
+
+pub fn generate_random_bytes(Int) -> FixedArray[Byte]
+
+pub fn get_global_context() -> Int
+
+pub fn get_private_key_max() -> String
+
+pub fn is_valid_private_key(FixedArray[Byte]) -> Bool
+
+pub fn private_key_from_seed(FixedArray[Byte]) -> Result[PrivateKey, ECDSAError]
+
+pub fn recover_ethereum_address(FixedArray[Byte], Signature) -> Result[FixedArray[Byte], ECDSAError]
+
+pub fn recover_public_key(FixedArray[Byte], Signature) -> Result[PublicKey, ECDSAError]
+
+pub fn recover_public_key_native(FixedArray[Byte], Signature) -> Result[PublicKey, ECDSAError]
+
+pub fn secp256k1_context_create(Int) -> Secp256k1Context
+
+pub fn secp256k1_context_destroy(Secp256k1Context) -> Unit
+
+pub fn secp256k1_ec_pubkey_create(Secp256k1Context, FixedArray[Byte], FixedArray[Byte]) -> Int
+
+pub fn secp256k1_ec_pubkey_parse(Secp256k1Context, FixedArray[Byte], FixedArray[Byte], UInt) -> Int
+
+pub fn secp256k1_ec_pubkey_serialize(Secp256k1Context, FixedArray[Byte], FixedArray[UInt], FixedArray[Byte], Int) -> Int
+
+pub fn secp256k1_ec_seckey_verify(Secp256k1Context, FixedArray[Byte]) -> Int
+
+pub fn secp256k1_ecdsa_recover(Secp256k1Context, FixedArray[Byte], FixedArray[Byte], FixedArray[Byte]) -> Int
+
+pub fn secp256k1_ecdsa_recoverable_signature_parse_compact(Secp256k1Context, FixedArray[Byte], FixedArray[Byte], Int) -> Int
+
+pub fn secp256k1_ecdsa_recoverable_signature_serialize_compact(Secp256k1Context, FixedArray[Byte], FixedArray[Int], FixedArray[Byte]) -> Int
+
+pub fn secp256k1_ecdsa_sign_recoverable(Secp256k1Context, FixedArray[Byte], FixedArray[Byte], FixedArray[Byte], Int, Int) -> Int
+
+pub fn secp256k1_ecdsa_signature_parse_compact(Secp256k1Context, FixedArray[Byte], FixedArray[Byte]) -> Int
+
+pub fn secp256k1_ecdsa_verify(Secp256k1Context, FixedArray[Byte], FixedArray[Byte], FixedArray[Byte]) -> Int
+
+pub fn sign(FixedArray[Byte], PrivateKey) -> Result[Signature, ECDSAError]
+
+pub fn sign_ethereum_message(FixedArray[Byte], PrivateKey) -> Result[Signature, ECDSAError]
+
+pub fn sign_message(FixedArray[Byte], PrivateKey) -> Result[Signature, ECDSAError]
+
+pub fn sign_native(FixedArray[Byte], PrivateKey) -> Result[Signature, ECDSAError]
+
+pub fn verify(FixedArray[Byte], Signature, PublicKey) -> Bool
+
+pub fn verify_and_recover(FixedArray[Byte], Signature, PublicKey) -> Bool
+
+pub fn verify_detailed(FixedArray[Byte], Signature, PublicKey) -> Result[Unit, ECDSAError]
+
+pub fn verify_keypair(KeyPair) -> Bool
+
+pub fn verify_native(FixedArray[Byte], Signature, PublicKey) -> Bool
+
+// Errors
+
+// Types and methods
+pub enum ECDSAError {
+  InvalidPrivateKey(String)
+  InvalidPublicKey(String)
+  InvalidSignature(String)
+  SignatureVerificationFailed
+  PublicKeyRecoveryFailed
+  InvalidRecoveryId
+  ArithmeticError(String)
+}
+pub impl Eq for ECDSAError
+pub impl Show for ECDSAError
+
+pub struct KeyPair {
+  private_key : PrivateKey
+  public_key : PublicKey
+}
+pub fn KeyPair::from_private_key(PrivateKey) -> Result[Self, ECDSAError]
+pub fn KeyPair::get_private_key(Self) -> PrivateKey
+pub fn KeyPair::get_public_key(Self) -> PublicKey
+pub fn KeyPair::new(PrivateKey, PublicKey) -> Self
+
+pub enum Point {
+  Infinity
+  Affine(FixedArray[Byte], FixedArray[Byte])
+}
+pub fn Point::affine(FixedArray[Byte], FixedArray[Byte]) -> Self
+pub fn Point::get_x(Self) -> FixedArray[Byte]?
+pub fn Point::get_y(Self) -> FixedArray[Byte]?
+pub fn Point::infinity() -> Self
+pub fn Point::is_infinity(Self) -> Bool
+
+pub struct PrivateKey {
+  bytes : FixedArray[Byte]
+}
+pub fn PrivateKey::from_bytes(FixedArray[Byte]) -> Result[Self, ECDSAError]
+pub fn PrivateKey::from_hex(String) -> Result[Self, ECDSAError]
+pub fn PrivateKey::to_bytes(Self) -> FixedArray[Byte]
+pub fn PrivateKey::to_hex(Self) -> String
+pub impl Eq for PrivateKey
+
+pub enum PublicKey {
+  Uncompressed(FixedArray[Byte])
+  Compressed(FixedArray[Byte])
+}
+pub fn PublicKey::from_bytes(FixedArray[Byte]) -> Result[Self, ECDSAError]
+pub fn PublicKey::get_coordinates(Self) -> Result[FixedArray[Byte], ECDSAError]
+pub fn PublicKey::to_bytes(Self) -> FixedArray[Byte]
+pub fn PublicKey::to_compressed(Self) -> Result[Self, ECDSAError]
+pub fn PublicKey::to_uncompressed(Self) -> Result[Self, ECDSAError]
+pub impl Eq for PublicKey
+
+pub struct Secp256k1 {
+  _dummy : Int
+}
+pub fn Secp256k1::generator(Self) -> Point
+pub fn Secp256k1::is_on_curve(Self, Point) -> Bool
+pub fn Secp256k1::new() -> Self
+
+#external
+pub type Secp256k1Context
+
+#external
+pub type Secp256k1Pubkey
+
+#external
+pub type Secp256k1RecoverableSignature
+
+pub struct Signature {
+  r : FixedArray[Byte]
+  s : FixedArray[Byte]
+  v : Int
+}
+pub fn Signature::ethereum_v(Self) -> Int
+pub fn Signature::from_bytes(FixedArray[Byte]) -> Result[Self, ECDSAError]
+pub fn Signature::new(FixedArray[Byte], FixedArray[Byte], Int) -> Result[Self, ECDSAError]
+pub fn Signature::standard_v(Self) -> Int
+pub fn Signature::to_bytes(Self) -> FixedArray[Byte]
+pub impl Eq for Signature
+pub impl Show for Signature
+
+// Type aliases
+pub type ECDSAResult[T] = Result[T, ECDSAError]
+
+pub type Secp256k1Ctx = Int
+
+// Traits
+

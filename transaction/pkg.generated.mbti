@@ -1,0 +1,74 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "PingGuoMiaoMiao/Lunarcrypto/transaction"
+
+// Values
+pub fn address_from_bytes(FixedArray[Byte]) -> Result[FixedArray[Byte], TransactionError]
+
+pub fn calculate_v_from_chain_id(UInt64, Int) -> UInt64
+
+pub fn empty_address() -> FixedArray[Byte]
+
+pub fn encode_legacy_transaction(LegacyTransaction) -> FixedArray[Byte]
+
+pub fn encode_unsigned_legacy_transaction(LegacyTransaction, UInt64) -> FixedArray[Byte]
+
+pub fn extract_chain_id_from_v(UInt64) -> UInt64?
+
+pub fn extract_recovery_id_from_v(UInt64) -> Int
+
+pub fn is_empty_address(FixedArray[Byte]) -> Bool
+
+pub fn is_valid_address(FixedArray[Byte]) -> Bool
+
+pub fn legacy_transaction_hash(LegacyTransaction, UInt64) -> FixedArray[Byte]
+
+pub fn sign_legacy_transaction(LegacyTransaction, FixedArray[Byte], UInt64) -> Result[LegacyTransaction, TransactionError]
+
+pub fn signed_legacy_transaction_hash(LegacyTransaction) -> FixedArray[Byte]
+
+// Errors
+
+// Types and methods
+pub struct LegacyTransaction {
+  nonce : UInt64
+  gas_price : UInt64
+  gas_limit : UInt64
+  to : FixedArray[Byte]?
+  value : UInt64
+  data : FixedArray[Byte]
+  v : UInt64
+  r : FixedArray[Byte]
+  s : FixedArray[Byte]
+}
+pub fn LegacyTransaction::is_signed(Self) -> Bool
+pub fn LegacyTransaction::new(UInt64, UInt64, UInt64, FixedArray[Byte]?, UInt64, FixedArray[Byte]) -> Self
+pub impl Eq for LegacyTransaction
+pub impl Show for LegacyTransaction
+
+pub enum TransactionError {
+  InvalidTransaction(String)
+  InvalidChainId
+  InvalidAddress(String)
+  InvalidGasValue(String)
+  EncodingError(String)
+  SigningError(String)
+}
+pub impl Eq for TransactionError
+pub impl Show for TransactionError
+
+pub enum TransactionType {
+  Legacy
+  AccessList
+  DynamicFee
+  Blob
+}
+pub impl Eq for TransactionType
+pub impl Show for TransactionType
+
+// Type aliases
+pub type Address = FixedArray[Byte]
+
+pub type TransactionResult[T] = Result[T, TransactionError]
+
+// Traits
+

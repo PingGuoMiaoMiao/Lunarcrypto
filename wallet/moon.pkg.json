@@ -1,0 +1,8 @@
+{
+  "is_main": false,
+  "import": [
+    "PingGuoMiaoMiao/Lunarcrypto/ecdsa",
+    "PingGuoMiaoMiao/LunarKeccak256/cmd/lib"
+  ]
+}
+

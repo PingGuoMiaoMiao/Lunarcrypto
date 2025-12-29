@@ -1,0 +1,136 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "PingGuoMiaoMiao/Lunarcrypto/rlp"
+
+// Values
+pub const BOUND_LONG_LIST : Int = 0xFF
+
+pub const BOUND_LONG_STRING : Int = 0xBF
+
+pub const BOUND_SHORT_LIST : Int = 0xF7
+
+pub const BOUND_SHORT_STRING : Int = 0xB7
+
+pub const EMPTY_LIST_ENCODING : Byte = \xc0
+
+pub const EMPTY_STRING_ENCODING : Byte = \x80
+
+pub const MAX_SHORT_LIST_LENGTH : Int = 55
+
+pub const MAX_SHORT_STRING_LENGTH : Int = 55
+
+pub const OFFSET_LONG_LIST : Int = 0xF7
+
+pub const OFFSET_LONG_STRING : Int = 0xB7
+
+pub const OFFSET_SHORT_LIST : Int = 0xC0
+
+pub const OFFSET_SHORT_STRING : Int = 0x80
+
+pub const OFFSET_SINGLE_BYTE : Int = 0x7F
+
+pub fn big_endian_to_int(FixedArray[Byte]) -> Int
+
+pub fn concat_bytes(FixedArray[Byte], FixedArray[Byte]) -> FixedArray[Byte]
+
+pub fn concat_bytes_array(Array[FixedArray[Byte]]) -> FixedArray[Byte]
+
+pub fn decode(FixedArray[Byte]) -> Result[RLPItem, RLPError]
+
+pub fn decode_bytes_list(FixedArray[Byte]) -> Result[Array[FixedArray[Byte]], RLPError]
+
+pub fn decode_int(FixedArray[Byte]) -> Result[Int, RLPError]
+
+pub fn decode_u64(FixedArray[Byte]) -> Result[UInt64, RLPError]
+
+pub fn decode_uint(FixedArray[Byte]) -> Result[UInt, RLPError]
+
+pub fn decode_with_remaining(FixedArray[Byte]) -> Result[DecodeResult, RLPError]
+
+pub fn encode(RLPItem) -> FixedArray[Byte]
+
+pub fn encode_bytes_array(Array[FixedArray[Byte]]) -> FixedArray[Byte]
+
+pub fn encode_bytes_item(FixedArray[Byte]) -> FixedArray[Byte]
+
+pub fn encode_bytes_list(Array[FixedArray[Byte]]) -> FixedArray[Byte]
+
+pub fn encode_int(Int) -> FixedArray[Byte]
+
+pub fn encode_u64(UInt64) -> FixedArray[Byte]
+
+pub fn encode_uint(UInt) -> FixedArray[Byte]
+
+pub fn example_decode() -> String
+
+pub fn example_encode_bytes() -> FixedArray[Byte]
+
+pub fn example_encode_integer() -> FixedArray[Byte]
+
+pub fn example_encode_list() -> FixedArray[Byte]
+
+pub fn example_nested_list() -> FixedArray[Byte]
+
+pub fn example_round_trip() -> Bool
+
+pub fn get_bytes(RLPItem) -> Result[FixedArray[Byte], RLPError]
+
+pub fn get_int(RLPItem) -> Result[Int, RLPError]
+
+pub fn get_list(RLPItem) -> Result[Array[RLPItem], RLPError]
+
+pub fn get_u64(RLPItem) -> Result[UInt64, RLPError]
+
+pub fn int_to_big_endian_minimal(Int) -> FixedArray[Byte]
+
+pub fn is_canonical_big_endian(FixedArray[Byte]) -> Bool
+
+pub fn rlp_bytes(FixedArray[Byte]) -> RLPItem
+
+pub fn rlp_int(Int) -> RLPItem
+
+pub fn rlp_list(Array[RLPItem]) -> RLPItem
+
+pub fn rlp_string(String) -> RLPItem
+
+pub fn rlp_u64(UInt64) -> RLPItem
+
+pub fn slice_bytes(FixedArray[Byte], Int, Int) -> FixedArray[Byte]
+
+// Errors
+
+// Types and methods
+pub struct DecodeResult {
+  item : RLPItem
+  remaining : FixedArray[Byte]
+}
+pub impl Show for DecodeResult
+
+pub enum RLPError {
+  InvalidInput(String)
+  UnexpectedEnd
+  InvalidLength
+  NonCanonicalEncoding
+}
+pub impl Eq for RLPError
+pub impl Show for RLPError
+
+pub enum RLPItem {
+  Bytes(FixedArray[Byte])
+  List(Array[RLPItem])
+}
+pub fn RLPItem::as_bytes(Self) -> Result[FixedArray[Byte], RLPError]
+pub fn RLPItem::as_list(Self) -> Result[Array[Self], RLPError]
+pub fn RLPItem::empty_bytes() -> Self
+pub fn RLPItem::empty_list() -> Self
+pub fn RLPItem::from_bytes(FixedArray[Byte]) -> Self
+pub fn RLPItem::from_list(Array[Self]) -> Self
+pub fn RLPItem::is_bytes(Self) -> Bool
+pub fn RLPItem::is_list(Self) -> Bool
+pub impl Eq for RLPItem
+pub impl Show for RLPItem
+
+// Type aliases
+pub type RLPResult[T] = Result[T, RLPError]
+
+// Traits
+
